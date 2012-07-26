@@ -29,14 +29,8 @@
 #mainView {
 	border: 1px solid #875010 /*{a-body-border}*/;
 	color: #1a1a1a /*{a-body-color}*/;
-	text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ #444444 /*{a-body-shadow-color}*/;
-	background: #f7931e /*{a-body-background-color}*/;
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #FFa121 /*{a-body-background-start}*/), to( #de841b /*{a-body-background-end}*/)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( #FFa121 /*{a-body-background-start}*/, #de841b /*{a-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient( #FFa121 /*{a-body-background-start}*/, #de841b /*{a-body-background-end}*/); /* FF3.6 */
-	background-image:     -ms-linear-gradient( #FFa121 /*{a-body-background-start}*/, #de841b /*{a-body-background-end}*/); /* IE10 */
-	background-image:      -o-linear-gradient( #FFa121 /*{a-body-background-start}*/, #de841b /*{a-body-background-end}*/); /* Opera 11.10+ */
-	background-image:         linear-gradient( #FFa121 /*{a-body-background-start}*/, #de841b /*{a-body-background-end}*/);
+	background:url(http://i24.photobucket.com/albums/c39/youngbutcute07/images-1.jpg) /*{a-body-background-color}*/;
+	background-size:100% 100%;
 }
 
 .ui-overlay-a {
