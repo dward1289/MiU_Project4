@@ -1,0 +1,141 @@
+<!doctype html>  
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	
+	<title>Mobile Site Template</title>
+	
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on">
+	
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	
+	
+	
+	
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="js/libs/modernizr.custom.min.js"></script>
+</head>
+
+<body>
+
+<div data-role="page" id="add" data-position="fixed">
+
+<div data-role="header">
+    <h1 style="text-align:left; margin-left:10px;">Remind Me Later</h1>
+</div>
+
+<div data-role="content" data-theme="e" id="addText">
+<div id="subHead">
+    <h2 style="text-align:left; margin-left:10px;">New Task</h2>
+</div>
+
+<form id="taskForm" action="#" method="post">
+			<ul id="errors"></ul>
+			
+<div data-role="fieldcontain">
+			<ul class="nOT">
+				<li><label for="taskName">Name of Task:</label><input type="text" id="taskName" class="required" placeholder="Enter task name here." data-mini="true"/></li>
+			</ul>
+</div>
+
+<div data-role="fieldcontain">
+	<fieldset data-role="controlgroup" data-mini="true">
+			<!--Radioboxes-->
+			<legend>Select a Category:</legend>
+				<input type="radio" value="Home" id="home" name="whichCategory" class="required"/><label for="home">Home</label>
+				<input type="radio" value="Business" id="business" name="whichCategory"/><label for="business">Business</label>
+				<input type="radio" value="School" id="school" name="whichCategory"/><label for="school">School</label>
+	</fieldset>		
+</div>
+
+<div data-role="fieldcontain">		
+		<!--Date select-->
+		<ul class="dateSelects">
+			<li><label for="taskDate">Starting Date of Task:</label><input type="date" id="taskDate" data-mini="true"/></li>
+		</ul>
+		
+		<ul class="dateSelects">
+			<li><label for="taskEnd">Ending Date of Task:</label><input type="date" id="taskEnd" data-mini="true"/></li>
+		</ul>
+</div>
+
+<div data-role="fieldcontain">		
+		<!--Priority levels-->
+		
+		<ul class="pWord">
+			<li id="select"><label for="priority">Select Priority:</label>
+			<select id="priorities" data-native-menu="false" data-mini="true">
+			<option value="--Choose Priority Level--">--Choose Priority Level--</option>
+			<option value="High">High</option>
+			<option value="Medium">Medium</option>
+			<option value="Low">Low</option>
+			</select>
+			</li>
+		</ul>
+</div>		
+
+		
+	<!--Stages of alerts available-->	
+	<ul class="alertNote">
+		<li><label for="taskDate">Select Alert Option:</label><input class="bar" type="range" id="alertWay" value="2" min="1" max="3" data-mini="true"/></li>
+
+	
+		<!--Notes-->
+		<li class="noteWord"><label for="notes">Notes:</label></li>
+		<li><textarea class="noteNow" id="notes" placeholder="Enter a note about the task here." data-mini="true"></textarea></li>
+		<li><input type="hidden" value="true" /></li>
+	</ul>
+
+	
+<center><div data-role="controlgroup" data-type="horizontal">
+<button id="submit" data-mini="true">Save Task</button>
+<input type="reset" value="Clear" data-icon="delete" data-iconpos="right" data-mini="true"/>
+</div>
+
+<div data-role="controlgroup" data-type="horizontal">
+<a href= "#" id="clear" data-mini="true" data-role="button">Clear Saved Tasks</a>
+<a href= "#" id="displayData" data-mini="true" data-role="button">Display Tasks</a>
+</div>
+</form>
+</div>	
+	
+
+
+<!--Add New Task Button-->
+
+
+<div id="seeHere"></div>
+
+<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="help.html">Help</a></li>
+	</ul>
+	</div><!-- /navbar -->
+<h3>MadGeek 1.0.2</h3>
+</div>
+
+</div><!--page end-->
+	
+	<!-- JavaScript under here -->
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<script src="js/libs/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/json.js"></script>
+<script src="js/main.js"></script>
+	
+
+
+</body>
+</html>

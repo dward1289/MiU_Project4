@@ -6,21 +6,6 @@ window.addEventListener("DOMContentLoaded", function(){
 		var theElement = document.getElementById(n);
 		return theElement;
 	}
-	//Create select field element and populate with options.
-	var makeDrop = function (){
-		var formTag = document.getElementsByTagName("form"); //formTag is array
-		var selectList = elId("select");
-		var makeSelect = document.createElement("select");
-		makeSelect.setAttribute("id", "priorities");
-	for(var i=0, p=priorityGroup.length; i<p; i++) {
-		var makeOption = document.createElement("option");
-		var optText = priorityGroup[i];
-		makeOption.setAttribute("value", optText);
-		makeOption.innerHTML = optText;
-		makeSelect.appendChild(makeOption);
-		}
-		selectList.appendChild(makeSelect);
-	}
 	
 	//Find value of selected radio button.
 	var radiobox = function () {
@@ -40,13 +25,11 @@ window.addEventListener("DOMContentLoaded", function(){
 				elId("taskForm").style.display = "none";
 				elId("clear").style.display = "inline";
 				elId("displayData").style.display = "none";
-				elId("addOne").style.display = "inline";
 				break;
 			case "off":
 				elId("taskForm").style.display = "block";
 				elId("clear").style.display = "inline";
 				elId("displayData").style.display = "inline";
-				elId("addOne").style.display = "none";
 				elId("items").style.display = "none";
 				
 				break;
@@ -100,7 +83,8 @@ window.addEventListener("DOMContentLoaded", function(){
 		var makeList = document.createElement("ul");
 		makeList.setAttribute("id", "wholeList");
 		makeDiv.appendChild(makeList);
-		document.body.appendChild(makeDiv);
+		var container = document.getElementById ("seeHere");
+		container.appendChild(makeDiv);
 		elId("items").style = "block"
 		for(var i=0, len=localStorage.length; i<len; i++) {
 			var makeLi = document.createElement("li");
@@ -144,6 +128,64 @@ window.addEventListener("DOMContentLoaded", function(){
 			var id = Math.floor(Math.random()*10000000001);
 			localStorage.setItem(id, JSON.stringify(json[n]));
 		}
+	}
+	
+	
+	var validator = function (e) {
+		//Define elements
+		var getPriority = elId("priorities");
+		var getNot = elId("taskName");
+		var getStart = elId("taskDate");
+		var getEnd = elId("taskEnd");
+		
+		//Reset error messages
+		errMsg.innerHTML = "";
+		getPriority.style.border = "1px solid black";
+		getNot.style.border = "1px solid black";
+		getStart.style.border = "1px solid black";
+		getEnd.style.border = "1px solid black";
+
+
+		//Error messages array
+		var message = [];
+		
+		//Priority validate
+		if(getPriority.value === "--Choose Priority Level--") {
+			var priorityError = "Please select priority level.".fontcolor("red").bold();
+			getPriority.style.border = "2px solid red";
+			message.push(priorityError);
+		}
+		//Name of Task validate
+		if(getNot.value === "") {
+			var notError = "Please enter the name of task.".fontcolor("red").bold();
+			getNot.style.border = "2px solid red";
+			message.push(notError);
+		}
+		//Start date validate
+		if(getStart.value === "") {
+			var startError = "Please select a start date.".fontcolor("red").bold();
+			getStart.style.border = "2px solid red";
+			message.push(startError);
+		}
+		//End date validate
+		if(getEnd.value === "") {
+			var endError = "Please select an ending date.".fontcolor("red").bold();
+			getEnd.style.border = "2px solid red";
+			message.push(endError);
+		}
+		//Explains errors
+		if(message.length >=1) {
+			for(var i = 0, j = message. length; i < j; i++){
+				var txt = document.createElement("li");
+				txt.innerHTML = message[i];
+				errMsg.appendChild(txt);
+			}
+		e.preventDefault();
+		return false;	
+		}
+		else{
+			storeData(this.key);
+			}		
 	}
 	
 	//Make edit and delete buttons for each stored item
@@ -203,7 +245,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 		//Change submit value to edit
 		//Found helpful code for button at: http://www.permadi.com/tutorial/jsInnerHTMLDOM/index.html
-		elId("submit").childNodes[0].nodeValue = "Edit Task";
+		elId("submit").value = "Edit Task";
 		var editSubmit = elId("submit");
 		
 		//Save key value in this function as property of editSubmit, use that value when save edited data.
@@ -211,62 +253,6 @@ window.addEventListener("DOMContentLoaded", function(){
 		editSubmit.key = this.key;
 	}
 	
-	var validate = function (e) {
-		//Define elements
-		var getPriority = elId("priorities");
-		var getNot = elId("taskName");
-		var getStart = elId("taskDate");
-		var getEnd = elId("taskEnd");
-		
-		//Reset error messages
-		errMsg.innerHTML = "";
-		getPriority.style.border = "1px solid black";
-		getNot.style.border = "1px solid black";
-		getStart.style.border = "1px solid black";
-		getEnd.style.border = "1px solid black";
-
-
-		//Error messages array
-		var message = [];
-		
-		//Priority validate
-		if(getPriority.value === "--Choose Priority Level--") {
-			var priorityError = "Please select priority level.".fontcolor("red").bold();
-			getPriority.style.border = "2px solid red";
-			message.push(priorityError);
-		}
-		//Name of Task validate
-		if(getNot.value === "") {
-			var notError = "Please enter the name of task.".fontcolor("red").bold();
-			getNot.style.border = "2px solid red";
-			message.push(notError);
-		}
-		//Start date validate
-		if(getStart.value === "") {
-			var startError = "Please select a start date.".fontcolor("red").bold();
-			getStart.style.border = "2px solid red";
-			message.push(startError);
-		}
-		//End date validate
-		if(getEnd.value === "") {
-			var endError = "Please select an ending date.".fontcolor("red").bold();
-			getEnd.style.border = "2px solid red";
-			message.push(endError);
-		}
-		//Explains errors
-		if(message.length >=1) {
-			for(var i = 0, j = message. length; i < j; i++){
-				var txt = document.createElement("li");
-				txt.innerHTML = message[i];
-				errMsg.appendChild(txt);
-			}
-		e.preventDefault();
-		return false;	
-		}
-		else{
-			storeData(this.key);
-			}		
-	}
 	
 	var deleteItem = function () {
 		var ask = confirm("Are you sure you want to delete this task?");
@@ -298,7 +284,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Variable defaults
 	var priorityGroup = ["--Choose Priority Level--","High","Medium","Low"];
 	var whichCategoryValue;
-	makeDrop();
 	errMsg = elId("errors");
 	
 	//Set Link & Submit Click Events
@@ -307,6 +292,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	var clearLink = elId("clear");
 	clearLink.addEventListener("click", clearLocal);
 	var submit1 = elId("submit");
-	submit1.addEventListener("click", validate);
+	submit1.addEventListener("click", validator);
 	
 });

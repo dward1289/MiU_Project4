@@ -1,0 +1,73 @@
+<!doctype html>  
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	
+	<title>Mobile Site Template</title>
+	
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on">
+	
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	
+	
+	
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="js/libs/modernizr.custom.min.js"></script>
+	
+</head>
+
+<body>
+
+	<div data-role="page" id="mainTitle">
+    
+    <div data-role="header" data-position="fixed" id="head">
+    <h1 style="text-align:left; margin-left:10px;">Remind Me Later</h1>
+    </div>
+    
+<div data-role="content" id="mainView">
+
+
+<img src="http://i24.photobucket.com/albums/c39/youngbutcute07/feature-1.png" alt="Feature" width= "285px" id="feature"/>
+
+<div data-role="controlgroup" data-mini="true" id="theMenu">
+<!--Main Buttons-->
+		<a href="additem.html" data-role="button" id="mainButton" data-icon="plus" data-iconpos="right" data-theme="d">New Task</a>
+		<a href= "#" id="displayData2" data-icon="grid" data-iconpos="right" data-role="button">Saved Tasks</a>
+		<a href= "about.html" data-role="button" id="mainButton" data-iconpos="right" data-icon="info">About</a>
+</div>
+	
+	</div>
+
+	<div id="seeHere"></div>
+		
+<div data-role="footer" data-position="fixed" id="foot">
+	<div data-role="navbar">
+	<ul>
+		<li><a href="#home" class="ui-btn-active">Home</a></li>
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="help.html">Help</a></li>
+	</ul>
+	</div><!-- /navbar -->
+<h3>MadGeek 1.0.2</h3>
+</div>
+</div>
+
+	<!-- JavaScript under here -->
+	<script type="text/javascript" src="js/getIt.js"></script>
+	<script type="text/javascript" src="js/json.js"></script>
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>
